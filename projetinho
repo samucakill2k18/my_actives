@@ -1,0 +1,60 @@
+# Dicionario dos dados
+dados = {}
+
+while True:
+    print('Escolha uma opção:')
+    print('[1] Adicionar dados')# Aperta 1 para adicionar dados ao dicionario
+    print('[2] Remover dados') # Aperta 2 para remover certo dado do dicionario
+    print('[3] Listar os dados')# apertar 3 para listar certo dado do dicionario
+    print('[0] Sair')# apertar 0 pra encerrar o terminal
+    print(30 * '-')
+    
+    # Escolha 
+    entrada = int(input('Escolha sua opção: ')
+    
+    # Caso entrada seja 0 finaliza o while e finaliza o programa
+    if entrada == 0:
+        break
+    
+    # Caso entrada seja 1 o programa irar pedir Nome, Cpf e data da introdução
+    elif entrada == 1:
+        nome = input('Digite o nome: ')
+        cpf = input('Digite o CPF: ')
+        data = input('Digite a data de introdução: ')
+        
+        dados[cpf] = {'nome': nome, 'data': data} # Dados onde cpf sera a chave principal {'cpf': {'nome': '', 'data' = ''}}
+                                                  # sendo assim o nome e data sera rastreado atraves do cpf.
+        print()
+        print('Dados inseridos com sucesso.')
+        print(30 * '-')
+
+    # Caso entrada seja 2 o programa irar pedir Cpf e remover ele juntamente com o nome e data atrelado a ele.
+    elif entrada == 2:
+        cpf_remover = input('Digite o CPF para remoção: ')
+        
+        # Procurar o cpf digitado nos dados
+        if cpf_remover in dados:    
+            nome_remover = dados[cpf_remover]['nome'] # variavel para pegar o nome atrelado ao cpf
+            del dados[cpf_remover]  # Removendo do dicionario o cpf ( Onde nome e data estão "colados" no cpf )
+            print(nome_remover, 'removido com sucesso.')
+            print(cpf_remover, 'removido com sucesso.')
+            print('Data removida com sucesso.')
+        else:
+            print('CPF não encontrado.')
+
+        print(30 * '-')
+
+    # Caso seja 3 o programa irar pedir o cpf e listar o nome, cpf e data
+    elif entrada == 3:
+        cpf_pesquisa = input('Digite o CPF: ')
+
+        if cpf_pesquisa in dados: # Ver se o cpf estar no dicionario 
+            nome_pesquisa = dados[cpf_pesquisa]['nome'] # Variaveis onde sera puxado o nome e datas
+            data_pesquisa = dados[cpf_pesquisa]['data']
+            print('Nome:', nome_pesquisa)
+            print('CPF:', cpf_pesquisa)
+            print('Data de introdução:', data_pesquisa)
+        else:
+            print('CPF não encontrado.')
+
+        print(30 * '-')
